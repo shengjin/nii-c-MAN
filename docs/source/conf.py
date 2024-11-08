@@ -6,8 +6,8 @@ project = 'Nii-C'
 copyright = '2024, Sheng JIN'
 author = 'Sheng JIN'
 
-release = '1.1'
-version = '1.1.0'
+release = 'latest'
+version = 'latest'
 
 # -- General configuration
 
