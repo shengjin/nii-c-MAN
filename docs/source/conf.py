@@ -3,7 +3,7 @@
 # -- Project information
 
 project = 'Nii-C'
-copyright = '2021-2024, Sheng JIN'
+copyright = '2020-2024, Sheng JIN'
 author = 'Sheng JIN'
 
 release = 'latest'
