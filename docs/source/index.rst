@@ -1,10 +1,9 @@
-Welcome to Lumache's documentation!
+Welcome to Nii-C's documentation!
 ===================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+**Nii-C** (/ni:k/ or /nik/ or /naic/) is a C language Automatic Parallel Tempering Markov Chain Monte Carlo code [1].
+
+Reference: [1] Jin, S., Jiang, W., & Wu, D.H. 2024, ApJS, 274, 10. 
 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
