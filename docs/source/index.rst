@@ -1,7 +1,7 @@
 Welcome to Nii-C's documentation!
 ===================================
 
-**Nii-C** (/ni:k/) is a high-performance, general-purpose Markov Chain Monte Carlo (MCMC) library written in modern C, designed for efficient Bayesian inference across diverse scientific domains [1].
+**Nii-C** (/ni:k/) is a high-performance, general-purpose Markov Chain Monte Carlo (MCMC) library written in modern C, designed for efficient Bayesian inference across diverse scientific domains.
 
 
 To date, we have used Nii-C to develop several applications for parameter fitting in exoplanet science, spanning astrometric signals, radial velocity curves, transit timing variation (TTV), spectral energy distribution (SED), and thermal emission spectroscopy.
@@ -56,7 +56,8 @@ Algorithm
    :maxdepth: 1
    :hidden:
 
-   APT-MCMC
+   algorithm
+
    code_structure
    core_functions
    code_variables
@@ -69,7 +70,7 @@ Development
    :maxdepth: 1
    :hidden:
 
-   future_development
+   development
 
 
 Acknowledgments
