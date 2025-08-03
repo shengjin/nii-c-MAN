@@ -13,9 +13,6 @@ Nii-X is investigating more possibilities with a parallel MALA (Metropolis-adjus
 
 
 
+
 .. [1] https://github.com/shengjin/nii-x.git
-
-. [1] https://github.com/shengjin/nii-x.git
-
- [1] https://github.com/shengjin/nii-x.git
 
