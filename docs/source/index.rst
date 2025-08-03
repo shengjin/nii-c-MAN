@@ -46,7 +46,6 @@ Usage
    :hidden:
 
    usage
-   input_parameters
 
 
 Algorithm
@@ -57,11 +56,6 @@ Algorithm
    :hidden:
 
    algorithm
-
-   code_structure
-   core_functions
-   code_variables
-
 
 
 Epilogue
