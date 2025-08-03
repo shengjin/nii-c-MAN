@@ -8,7 +8,7 @@ To date, we have used Nii-C to develop several applications for parameter fittin
 Each application achieves state-of-the-art convergence speed and computational efficiency.
 
 
-Though Nii-C's applications are currently limited to exoplanet science, it should solve the problem of high-dimensional sampling in other research domains as well.
+Though Nii-C's applications are currently limited to exoplanet science, it should solve the problems of high-dimensional sampling in other research domains as well.
 If you're beginning to use Nii-C for your own application or have any questions, please feel free to contact us.
 
 
@@ -52,7 +52,7 @@ Usage
 Algorithm
 ------------
 .. toctree::
-   :caption: THEORY
+   :caption: Algorithm
    :maxdepth: 1
    :hidden:
 
@@ -63,22 +63,14 @@ Algorithm
    code_variables
 
 
-Development
-------------
-.. toctree::
-   :caption: DEVELOPMENT
-   :maxdepth: 1
-   :hidden:
 
-   development
-
-
-Acknowledgments
+Epilogue
 ------------
 .. toctree::
    :caption: EPILOGUE
    :maxdepth: 1
    :hidden:
 
+   roadmap
    acknowledgments
 
