@@ -8,12 +8,7 @@ To date, we have used Nii-C to develop several applications for parameter fittin
 Each application achieves state-of-the-art convergence speed and computational efficiency.
 
 
-
-
-Contact us
-------------
-
-Though Nii-C's applications are currently limited to exoplanet science, it should solve the problems of high-dimensional sampling in other research domains as well.
+Although Nii-C has so far been demonstrated only in exoplanet science, it is equally capable of addressing high-dimensional sampling challenges in other fields.
 If you're beginning to use Nii-C for your own application or have any questions, please feel free to contact us.
 
 
