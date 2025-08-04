@@ -23,7 +23,7 @@ If you're beginning to use Nii-C for your own application or have any questions,
    section#install,
    section#usage,
    section#algorithm,
-   section#development,
+   section#roadmap,
    section#acknowledgments {
        display:none;
    }
@@ -57,14 +57,4 @@ Algorithm
 
    algorithm
 
-
-Epilogue
-------------
-.. toctree::
-   :caption: EPILOGUE
-   :maxdepth: 1
-   :hidden:
-
-   roadmap
-   acknowledgments
 
