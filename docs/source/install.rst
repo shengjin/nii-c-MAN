@@ -10,7 +10,7 @@ The minimum requirement for Nii-C is an implementation of the MPI protocol, as N
 Both OpenMPI and MPICH are fully supported.
 
 
-   -  **git**: for cloning the code from GitHub
+   -  **git**: for cloning the code from GitHub.
    -  **make**: for compling the code.
    -  **MPI**: can be installed via OpenMPI or MPICH; either option is fine.
 
@@ -37,7 +37,7 @@ Finally, compile the code:
 
    $ make
 
-With compilation complete, we can now run the executable, which will be sampling a linear regression model:
+With compilation complete, we can now run the executable, which will be sampling a linear regression model as an example:
 
 
 .. code-block:: console
@@ -57,7 +57,7 @@ We will describe them in detail on the :doc:`../usage` page.
 
 
 
-.. [1]  Jin, S., Jiang, W., Wu, D.-H. 2024. Automatic Parallel Tempering Markov Chain Monte Carlo with Nii-C. The Astrophysical Journal Supplement Series 274, 10. doi:10.3847/1538-4365/ad6300
+.. [1]  https://ui.adsabs.harvard.edu/abs/2024ApJS..274...10J/abstract
 
 
 
