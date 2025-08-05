@@ -48,10 +48,7 @@ The template likelihood function is called:
 
 Where the "\*ptr_one_chain" is a one-dimensional array of model paramters, "\*data_NlineNdim" is a one-dimensional array of flattened input datafile, "nline_data" is the line number of the user's input datafile, "beta_one" is the beta value of each parallel tempering chain.
 
-Where 
-
-
-However, we
+Then, within the main body of logll_beta, we can unpacked from the ptr_one_chain array all the model parameters as follows:
 
 .. code-block:: C
 
@@ -64,9 +61,17 @@ However, we
     para2 = *(ptr_one_chain+2);
     para3 = *(ptr_one_chain+3);
 
+The remaining components of the likelihood function are model-specific and depend on the details of the user's input data file.
+That's the main task of applying Nii-C to a user's model, and the user should work carefully on it.
+In the "model" directory of the source code, there are several user_logll.c files for different applications that can be used as exmaples.
+
 
 .. note::
-   Don't forget the tempering at the end of the likelihood function. Otherwise .. not be used.
+   To use the Nii-C's APT-MCMC algorithm, remember to apply the final tempering step with beta_one at the end of the likelihood function. Depending on how the likelihood is expressed in your implementation, this could be something like "logll*beta_one" or "pow(likelihood, beta_one)."
 
 
+The input datafile
+------------------
+
+A multicolumn data.
 
