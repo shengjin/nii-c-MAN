@@ -44,7 +44,7 @@ The template likelihood function is called:
 
 .. code-block:: C
 
-         double logll_beta(double \*ptr_one_chain, int nline_data, double \*data_NlineNdim, double beta_one);
+         double logll_beta(double *ptr_one_chain, int nline_data, double *data_NlineNdim, double beta_one);
 
 Where the "\*ptr_one_chain" is a one-dimensional array of model paramters, "\*data_NlineNdim" is a one-dimensional array of flattened input datafile, "nline_data" is the line number of the user's input datafile, "beta_one" is the beta value of each parallel tempering chain.
 
