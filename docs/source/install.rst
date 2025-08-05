@@ -52,7 +52,8 @@ In this linear regression example, which is configured by the "input.ini" file i
 Please see the Nii-C's code paper [1]_ for the details of the Nii-C's parallel-tempering algorithm and the linear regression model used in this example.
 
 
-
+This linear regression model is simple yet contains all four elements necessary for MCMC sampling with Nii-C: "user_prior.c" specifying the prior distribution, "user_logll.c" defining the likelihood function, "input.ini" configuring Nii-C's APT-MCMC sampling process, and "xy.dat" containing the input data for model evaluation.
+We will describe them in detail on the :doc:`../usage` page.
 
 
 
