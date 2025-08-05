@@ -43,9 +43,10 @@ To facilitate applying Nii-C to different models, we designed a template functio
 The template likelihood function is called:
 
 .. code-block:: C
-         double logll_beta(double \*ptr_one_chain, int nline_data, double \*data_NlineNdim, double beta_one)
 
-Where the \*ptr_one_chain is one-dimensional array of the model paramters, \*data_NlineNdim is a one-dimensional array of the flatted user's datafile, nline_data is the line number of the user's datafile, beta_one is the beta value of each parallel tempering chain.
+         double logll_beta(double \*ptr_one_chain, int nline_data, double \*data_NlineNdim, double beta_one);
+
+Where the "\*ptr_one_chain" is a one-dimensional array of model paramters, "\*data_NlineNdim" is a one-dimensional array of flattened input datafile, "nline_data" is the line number of the user's input datafile, "beta_one" is the beta value of each parallel tempering chain.
 
 Where 
 
