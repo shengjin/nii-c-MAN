@@ -36,9 +36,36 @@ Copy the newly generated user_prior.c file into the source directory of Nii-C, r
 The Likelihood: user_logll.c
 ----------------------------
 
+In Nii-C, we use the user_logll.c file to describe a model's likelihood function.
+Because the likelihood function is inherently model-specific, it cannot be auto-generated in the same way as the user_prior.c file.
+
+To facilitate applying Nii-C to different models, we designed a template function that wraps the coding of the user-specific likelihood function.
+The template likelihood function is called:
+
+.. code-block:: C
+         double logll_beta(double \*ptr_one_chain, int nline_data, double \*data_NlineNdim, double beta_one)
+
+Where the \*ptr_one_chain is one-dimensional array of the model paramters, \*data_NlineNdim is a one-dimensional array of the flatted user's datafile, nline_data is the line number of the user's datafile, beta_one is the beta value of each parallel tempering chain.
+
+Where 
 
 
+However, we
 
+.. code-block:: C
+
+    double para0;
+    double para1;
+    double para2;
+    double para3;
+    para0 = *ptr_one_chain;
+    para1 = *(ptr_one_chain+1);
+    para2 = *(ptr_one_chain+2);
+    para3 = *(ptr_one_chain+3);
+
+
+.. note::
+   Don't forget the tempering at the end of the likelihood function. Otherwise .. not be used.
 
 
 
