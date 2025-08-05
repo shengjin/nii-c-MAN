@@ -11,7 +11,7 @@ Both OpenMPI and MPICH are fully supported.
 
 
    -  **git**: for cloning the code from GitHub
-   -  **make** for compling the code.
+   -  **make**: for compling the code.
    -  **MPI**: can be installed via OpenMPI or MPICH; either option is fine.
 
 
@@ -47,9 +47,10 @@ With compilation complete, we can now run the executable, which will be sampling
 
 The sampling process will be complete in a few seconds.
 In the newly generated results directory, there are several chain[0-9].dat files contain Markov-chain samples collected at the distinct β of Nii-C’s parallel-tempering MCMC framework.
-Always use the chain obtained by β = 1.0 to retrieve the target distribution, as chains obtained by 0 < β < 1.0 merely serve as auxiliary chains.
-In this linear regression example, which is configured by the input.ini file in the source code directory, chain3.dat (β = 1.0) contains the posterior samples of the model parameters.
-The details of the Nii-C's parallel-tempering algorithm and the linear regression model used in this example can be found in the code paper [1]_.
+Note that we should always use the chain obtained by β = 1.0 to retrieve the target distribution, as chains obtained by 0 < β < 1.0 merely serve as auxiliary chains.
+In this linear regression example, which is configured by the "input.ini" file in the source code directory, chain3.dat (β = 1.0) contains the posterior samples of the model parameters.
+Please see the Nii-C's code paper [1]_ for the details of the Nii-C's parallel-tempering algorithm and the linear regression model used in this example.
+
 
 
 
