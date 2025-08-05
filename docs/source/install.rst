@@ -46,7 +46,20 @@ With compilation complete, we can now run the executable, which will be sampling
 
 
 The sampling process will be complete in a few seconds.
-In the new generated resulsts directory, there are a few chain*.dat file that are the Markov Chains with different beta values in the parallel tempering framework (the Algorithm are described briefly in the page). 
-Use the chain that corresponds to the beta = 1.0 to generate a corner plot, in the default case is the Chain3.dat.
+In the newly generated results directory, there are several chain[0-9].dat files contain Markov-chain samples collected at the distinct β of Nii-C’s parallel-tempering MCMC framework.
+Always use the chain obtained by β = 1.0 to retrieve the target distribution, as chains obtained by 0 < β < 1.0 merely serve as auxiliary chains.
+In this linear regression example, which is configured by the input.ini file in the source code directory, chain3.dat (β = 1.0) contains the posterior samples of the model parameters.
+The details of the Nii-C's parallel-tempering algorithm and the linear regression model used in this example can be found in the code paper [1]_.
+
+
+
+
+
+.. [1]  Jin, S., Jiang, W., Wu, D.-H. 2024. Automatic Parallel Tempering Markov Chain Monte Carlo with Nii-C. The Astrophysical Journal Supplement Series 274, 10. doi:10.3847/1538-4365/ad6300
+
+
+
+
+
 
 
