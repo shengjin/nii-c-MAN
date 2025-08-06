@@ -77,11 +77,16 @@ By default, Nii-C expects the user to supply a data file for model evaluation.
 The user must specify the name of the data file in the "input.ini" file, as well as the number of columns in the data file and the delimiter for each column.
 Within the "input.ini" file, there are three variables associated with the user's datafile, as follows:
 
-.. code-block:: 
+.. code-block:: Markdown
 
     Data_file:  this variable is used to specify the name of the input data file.
     ndim_data:  an integer variable that denots the number of columns present in the data file.
     Delimiter:  the marker that separates each column in the data file.
+
+The user's data file will be loaded into memory and passed to the logll_beta function via the one-dimensional array data_NlineNdim.
+
+.. note::
+   No matter how many columns the original data file has, Nii-C will load the multi-column data file and flatten it into a one-dimensional array called data_NlineNdim. Therefore, the user must transform the one-dimensional array back into its original multi-column form when calculating the likelihood function. Converting the one-dimensional array back to its original multi-column form can be something like data_NlineNdim[i_line*ndim_data+j_column].
 
 
 
