@@ -97,9 +97,9 @@ It also sets the prior ranges of all model parameters, specifies the details of 
 This section will introduce all the variables in the input.ini file.
 
 
-- ``N_iter``: ti should be a large integer. It sets the total number of iterations of the MCMC process.
-- ``conf``: the name of the configuration file. ``conf.dat`` is the default.
-- ``mhd_config_filename``: the name of the MHD configuration file. ``mhd_config.dat`` is the default.
-- ``focused_transport``: whether to solve the focused transport equation. ``.false.`` is the default, which means solving the Parker transport equation.
-- ``nlgc``: whether to use the nonlinear guiding center (NLGC) theory to calculate the perpendicular diffusion coefficient. ``.false.`` is the default, which means not using the NLGC method. When ``.true.``, it is better to turn on ``deltab_flag=1`` and ``correlation_flag=1`` (see below).
-- ``mpi_size``: the total number of MPI processes.
+- ``N_iter``: it should be a large integer. It sets the total number of iterations of the MCMC process.
+- ``N_beta``: the number of parallel Markov Chains, should be set to at least ``2``.
+- ``Beta_Values``: a list of doubles that give the β values of parallel chains, spearated by commas. The number of items in the list should exactly match the number of parallel chains (``N_beta``).
+- ``Tune_Ladder``: whether to tune the parallel tempering ladder (``Beta_Values``) at the beginning of the APT-MCMC process. Set to ``1`` to enable tuning; set to ``0`` to disable it.  Recommend setting this option to ``0`` because the ladder tuning module is not well tested.
+- ``N_stopTuneLadder``: it specifies when the ladder-tuning phase will be terminated. It should be a integer that is less than ``N_iter``. This variable is not used if ``Tune_Ladder`` is set to ``0``.
+- ``scale_tune_ladder`` and ``zero_stretch``: controlling variables used in our ladder-tuning algorithm. They are ignored when ``Tune_Ladder`` is set to ``0`` (the recommended setting).
