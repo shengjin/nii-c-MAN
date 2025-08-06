@@ -103,3 +103,15 @@ This section will introduce all the variables in the input.ini file.
 - ``Tune_Ladder``: whether to tune the parallel tempering ladder (``Beta_Values``) at the beginning of the APT-MCMC process. Set to ``1`` to enable tuning; set to ``0`` to disable it.  Recommend setting this option to ``0`` because the ladder tuning module is not well tested.
 - ``N_stopTuneLadder``: it specifies when the ladder-tuning phase will be terminated. It should be a integer that is less than ``N_iter``. This variable is not used if ``Tune_Ladder`` is set to ``0``.
 - ``scale_tune_ladder`` and ``zero_stretch``: controlling variables used in our ladder-tuning algorithm. They are ignored when ``Tune_Ladder`` is set to ``0`` (the recommended setting).
+- ``N_parm``: the number of model parameters, must equal the value of ``n`` in auto_unif_prior.py that generates user_prior.c.
+- ``n_iter_a_stack``: the number of interation per stack. In Nii-C, stacks are segments of Markov chains, and the entire ``N_iter`` iterations is divided into multiple stacks.
+- ``n_iter_a_batch_base`` and ``n_iter_a_batch_rand``: these two variables randomly determine the number of iterations in a batch. In Nii-C, we test the swapping criteria between parallel Markov chains at the end of each batch. Therefore each stack is subdivided into many batches.  The number of iterations in a batch is randomly determined by ``n_iter_a_batch_base`` ± a random integer ≤ ``n_iter_a_batch_rand``.
+- ``N_swap``: the number of swap proposals at the end of each batch. Set it to ``1`` or any larger integer.
+- ``Swapmode``: this variable determines the mode used to select parallel chains for testing the swap criterion. ``0`` means that swaps are proposed only between adjacent chains, while ``1`` means that swaps are proposed between randomly chosen chains.
+- ``N_stoptune``: it specifies when the proposal tuning phase will end. In Nii-C, we tune the Gaussian proposals of every model parameter during the initial burn-in stage to achieve a good acceptance rate. Set ``N_stoptune`` to a number < ``N_iter`` to ensure the Markovian property of the MCMC process.
+- ``N_begintune``: when to start tuning the Gaussian proposals of every model parameter. Normally, this value should be set to ``0``.
+
+
+
+
+
