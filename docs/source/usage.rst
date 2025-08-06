@@ -89,4 +89,9 @@ The user's data file will be loaded into memory and passed to the logll_beta fun
    No matter how many columns the original data file has, Nii-C will load the multi-column data file and flatten it into a one-dimensional array called data_NlineNdim. Therefore, the user must transform the one-dimensional array back into its original multi-column form when calculating the likelihood function. Converting the one-dimensional array back to its original multi-column form can be something like data_NlineNdim[i_line*ndim_data+j_column].
 
 
+The input.ini file
+------------------
+
+The input.ini file sets the controlling variables of the Nii-C's APT-MCMC process, ...
+
 

@@ -49,7 +49,7 @@ With compilation complete, we can now run the executable, which will be sampling
 The sampling process will be complete in a few seconds.
 In the newly generated results directory, there are several chain[0-9].dat files contain Markov-chain samples collected at the distinct β of Nii-C’s parallel-tempering MCMC framework.
 In this linear regression example, which is configured by the "input.ini" file in the source code directory, chain3.dat (β = 1.0) contains the posterior samples of the model parameters.
-Please see the Nii-C's code paper [1]_ for the details of the Nii-C's parallel-tempering algorithm and the linear regression model used in this example.
+Please see the Nii-C's code paper [1]_ for the details of the Nii-C's Automatic Parallel Tempering Markov Chain Monte Carlo (APT-MCMC) algorithm and the linear regression model used in this example.
 
 
 .. note::
