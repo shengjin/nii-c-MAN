@@ -1,17 +1,38 @@
 Algorithm
 ======================
 
+Sampling high-dimensional or multimodal distributions faces two critical obstacles: (1) chains become trapped in local modes, never reaching the global optimum, and (2) no fixed set of proposal widths can simultaneously guarantee efficient early exploration and a high late-stage acceptance rate.
 
-Algorithm and Workflow
-----------------------
+Nii-C resolves these issues with two complementary techniques: parallel tempering, which equips chains to escape local modes, and an automated control system—activated during an initial tuning phase—that jointly optimizes the temperature ladder and every chain’s proposal distributions.
 
+The Nii-C's Automatic Parallel Tempering Markov Chain Monte Carlo (APT-MCMC) algorithm is  fully detailed in the code paper [1]_.  
+Listed below are Nii-C’s core subroutines and functions for advanced users who wish to navigate or modify the code.
+
+
+The Nii-C Workflow
+------------------
+
+Nii-C splits the Markov Chain Monte Carlo into two phases.
+
+1.  Initial tuning stage (non-Markovian):
+    A control system automatically optimizes the temperature ladder of every parallel-tempering chain, and the Gaussian proposal widths for every model parameter in every chain. This guarantees an effective temperature spacing and a healthy acceptance rate while the sampler first explores the parameter space.
+
+2.   Production stage (Markovian): The control system is frozen; the chains revert to standard parallel-tempering MCMC and satisfy detailed balance, ensuring convergence to the target stationary distributions. 
+
+The figure below summarizes the workflow of the Nii-C code.
 
 .. image:: image/nii-c.jpg
 
 
+.. note::
+   Nii-C is designed as a flexible parallel-MCMC engine that can be adapted to diverse sampling tasks simply by adjusting the parameters in ``input.ini``. Please refer to the code paper for different ways of controlling the parallel MCMC process.
 
-Subroutins of Nii-C
--------------------
+
+
+Subroutines of Nii-C
+---------------------
+
+Below, we describe the primary subroutine files of the Nii-C code.
 
 - ``main.c``: This file contains the main function of the program. It is responsible for configuring and executing the entire APT-MCMC process.
     
@@ -39,6 +60,8 @@ Subroutins of Nii-C
 
 Key Functions in Nii-C 
 ----------------------
+
+The following list describes the key functions in the Nii-C code.
 
 - ``calc_closest_ar``: In a tuning stage, this function identifies the acceptance rate that is closest to the ideal value of 0.234 in the two-dimensional array named ``ar_ParmNvaried``. The array records the acceptance rates of ``N_para`` tuning groups comprising ``Nvaried`` tuning chains for each model parameter.
 
@@ -134,4 +157,5 @@ Key Functions in Nii-C
 - ``tune_oneparm_Nvaried``:  In a tuning process, this function updates the ``sigma_tune1parm_NvariedParm`` array. The array consists of ``Nvaried`` sets of new sampling step sizes for a group of tuning chains that are used to adjust the step size of a model parameter. The new values for the sampling step sizes of the group of tuning chains are provided in an array named ``sigma_alltune_ParmNvaried``. 
 
 
+.. [1]  https://ui.adsabs.harvard.edu/abs/2024ApJS..274...10J/abstract
 
