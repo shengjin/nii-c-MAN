@@ -70,8 +70,18 @@ In the "model" directory of the source code, there are several user_logll.c file
    To use the Nii-C's APT-MCMC algorithm, remember to apply the final tempering step with beta_one at the end of the likelihood function. Depending on how the likelihood is expressed in your implementation, this could be something like "logll*beta_one" or "pow(likelihood, beta_one)."
 
 
-The input datafile
+The input data file
 ------------------
 
-A multicolumn data.
+By default, Nii-C expects the user to supply a data file for model evaluation.
+The user must specify the name of the data file in the "input.ini" file, as well as the number of columns in the data file and the delimiter for each column.
+Within the "input.ini" file, there are three variables associated with the user's datafile, as follows:
+
+.. code-block:: 
+
+    Data_file:  this variable is used to specify the name of the input data file.
+    ndim_data:  an integer variable that denots the number of columns present in the data file.
+    Delimiter:  the marker that separates each column in the data file.
+
+
 
