@@ -14,11 +14,12 @@ The Nii-C Workflow
 
 Nii-C splits the Markov Chain Monte Carlo into two phases.
 
-- ``1`` Initial tuning stage (non-Markovian):
+- ``1. Initial tuning stage (non-Markovian)``:
     A control system automatically optimizes the temperature ladder of every parallel-tempering chain, and the Gaussian proposal widths for every model parameter in every chain. This guarantees an effective temperature spacing and a healthy acceptance rate while the sampler first explores the parameter space.
 
 
-- ``2`` Production stage (Markovian): The control system is frozen; the chains revert to standard parallel-tempering MCMC and satisfy detailed balance, ensuring convergence to the target stationary distributions. 
+- ``2. Production stage (Markovian)``:
+    The control system is frozen; the chains revert to standard parallel-tempering MCMC and satisfy detailed balance, ensuring convergence to the target stationary distributions. 
 
 
 The figure below summarizes the workflow of the Nii-C code.
