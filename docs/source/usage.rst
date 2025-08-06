@@ -7,7 +7,7 @@ Introduction
 Although Nii-C can be used to sample any target distribution, it is typically used in the context of Bayesian inference.
 Specifically, it is used to sample the posterior distribution under a given model.
 
-To adapt Nii-C for sampling the posterior of a particular evaluation model, four components must be modified: user_prior.c, user_logll.c, input.ini, and a problem-specific data file.
+To adapt Nii-C for sampling the posterior of a particular evaluation model, four components must be modified: ``user_prior.c``, ``user_logll.c``, ``input.ini``, and a problem-specific data file.
 Below, we address each of these four components in detail.
 
 
@@ -16,8 +16,8 @@ The Prior: user_prior.c
 
 In Nii-C, we use the file user_prior.c to describe the prior distribution of all model parameters. 
 
-The Python script "auto_unif_prior.py", located in the "auto_prior" directory, is used to automatically generate user_prior.c.
-At the top of auto_unif_prior.py, set "n" to the number of model parameters and run:
+The Python script ``auto_unif_prior.py``, located in the ``auto_prior`` directory, is used to automatically generate user_prior.c.
+At the top of auto_unif_prior.py, set ``n`` to the number of model parameters and run:
 
 .. code-block:: console
 
@@ -46,7 +46,7 @@ The template likelihood function is called:
 
          double logll_beta(double *ptr_one_chain, int nline_data, double *data_NlineNdim, double beta_one);
 
-Where the "\*ptr_one_chain" is a one-dimensional array of model paramters, "\*data_NlineNdim" is a one-dimensional array of flattened input datafile, "nline_data" is the line number of the user's input datafile, "beta_one" is the beta value of each parallel tempering chain.
+Where the ``*ptr_one_chain`` is a one-dimensional array of model paramters, ``*data_NlineNdim`` is a one-dimensional array of flattened input datafile, ``nline_data`` is the line number of the user's input datafile, ``beta_one`` is the beta value of each parallel tempering chain.
 
 Then, within the main body of logll_beta, we can unpacked from the ptr_one_chain array all the model parameters as follows:
 
@@ -63,7 +63,7 @@ Then, within the main body of logll_beta, we can unpacked from the ptr_one_chain
 
 The remaining components of the likelihood function are model-specific and depend on the details of the user's input data file.
 That's the main task of applying Nii-C to a user's model, and the user should work carefully on it.
-In the "model" directory of the source code, there are several user_logll.c files for different applications that can be used as exmaples.
+In the ``model`` directory of the source code, there are several user_logll.c files for different applications that can be used as exmaples.
 
 
 .. note::
@@ -74,7 +74,7 @@ The user's data file
 --------------------
 
 By default, Nii-C expects the user to supply a data file for model evaluation.
-The user must specify the name of the data file in the "input.ini" file, as well as the number of columns in the data file and the delimiter for each column.
+The user must specify the name of the data file in the ``input.ini`` file, as well as the number of columns in the data file and the delimiter for each column.
 Within the "input.ini" file, there are three variables associated with the user's datafile, as follows:
 
 .. code-block:: Markdown
