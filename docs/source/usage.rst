@@ -70,8 +70,8 @@ In the "model" directory of the source code, there are several user_logll.c file
    To use the Nii-C's APT-MCMC algorithm, remember to apply the final tempering step with beta_one at the end of the likelihood function. Depending on how the likelihood is expressed in your implementation, this could be something like "logll*beta_one" or "pow(likelihood, beta_one)."
 
 
-The input data file
-------------------
+The user's data file
+--------------------
 
 By default, Nii-C expects the user to supply a data file for model evaluation.
 The user must specify the name of the data file in the "input.ini" file, as well as the number of columns in the data file and the delimiter for each column.
@@ -92,6 +92,14 @@ The user's data file will be loaded into memory and passed to the logll_beta fun
 The input.ini file
 ------------------
 
-The input.ini file sets the controlling variables of the Nii-C's APT-MCMC process, ...
+As mentioned earlier, the user's data file must be specified in the input.ini file.  In fact, the input.ini file does far more.  It is Nii-C's main configuration file, governing every aspect of the control variables of the APT-MCMC process.
+It also sets the prior ranges of all model parameters, specifies the details of the output chains, and more.
+This section will introduce all the variables in the input.ini file.
 
 
+- ``N_iter``: ti should be a large integer. It sets the total number of iterations of the MCMC process.
+- ``conf``: the name of the configuration file. ``conf.dat`` is the default.
+- ``mhd_config_filename``: the name of the MHD configuration file. ``mhd_config.dat`` is the default.
+- ``focused_transport``: whether to solve the focused transport equation. ``.false.`` is the default, which means solving the Parker transport equation.
+- ``nlgc``: whether to use the nonlinear guiding center (NLGC) theory to calculate the perpendicular diffusion coefficient. ``.false.`` is the default, which means not using the NLGC method. When ``.true.``, it is better to turn on ``deltab_flag=1`` and ``correlation_flag=1`` (see below).
+- ``mpi_size``: the total number of MPI processes.
