@@ -98,20 +98,71 @@ This section will introduce all the variables in the input.ini file.
 
 
 - ``N_iter``: it should be a large integer. It sets the total number of iterations of the MCMC process.
+
 - ``N_beta``: the number of parallel Markov Chains, should be set to at least ``2``.
+
 - ``Beta_Values``: a list of doubles that give the β values of parallel chains, spearated by commas. The number of items in the list should exactly match the number of parallel chains (``N_beta``).
+
 - ``Tune_Ladder``: whether to tune the parallel tempering ladder (``Beta_Values``) at the beginning of the APT-MCMC process. Set to ``1`` to enable tuning; set to ``0`` to disable it.  Recommend setting this option to ``0`` because the ladder tuning module is not well tested.
+
 - ``N_stopTuneLadder``: it specifies when the ladder-tuning phase will be terminated. It should be a integer that is less than ``N_iter``. This variable is not used if ``Tune_Ladder`` is set to ``0``.
+
 - ``scale_tune_ladder`` and ``zero_stretch``: controlling variables used in our ladder-tuning algorithm. They are ignored when ``Tune_Ladder`` is set to ``0`` (the recommended setting).
+
 - ``N_parm``: the number of model parameters, must equal the value of ``n`` in auto_unif_prior.py that generates user_prior.c.
+
 - ``n_iter_a_stack``: the number of interation per stack. In Nii-C, stacks are segments of Markov chains, and the entire ``N_iter`` iterations is divided into multiple stacks.
+
 - ``n_iter_a_batch_base`` and ``n_iter_a_batch_rand``: these two variables randomly determine the number of iterations in a batch. In Nii-C, we test the swapping criteria between parallel Markov chains at the end of each batch. Therefore each stack is subdivided into many batches.  The number of iterations in a batch is randomly determined by ``n_iter_a_batch_base`` ± a random integer ≤ ``n_iter_a_batch_rand``.
+
 - ``N_swap``: the number of swap proposals at the end of each batch. Set it to ``1`` or any larger integer.
+
 - ``Swapmode``: this variable determines the mode used to select parallel chains for testing the swap criterion. ``0`` means that swaps are proposed only between adjacent chains, while ``1`` means that swaps are proposed between randomly chosen chains.
+
 - ``N_stoptune``: it specifies when the proposal tuning phase will end. In Nii-C, we tune the Gaussian proposals of every model parameter during the initial burn-in stage to achieve a good acceptance rate. Set ``N_stoptune`` to a number < ``N_iter`` to ensure the Markovian property of the MCMC process.
+
 - ``N_begintune``: when to start tuning the Gaussian proposals of every model parameter. Normally, this value should be set to ``0``.
 
+- ``n_iter_in_tune``: it sets the number of iterations in the tuning stage. These temporary iterations are used to find good Gaussian proposal sizes for all the model parameters. They are not part of the ``N_iter`` iterations.
+
+- ``ar_ok_lower``, ``ar_ok_upper`` and ``ar_best``:  these three variables determine if the Gaussian proposals of a chain need to be tuned at the end of a stack.  ``ar_best`` is the ideal acceptance rate.  We will not tune the proposals of a chain if its acceptance rate in a stack is between ``ar_ok_lower`` and ``ar_ok_upper``. 
+
+- ``ar_accept_diff``: a control variable that is used in setting the Gaussian proposals of a chain in our tuning algorithm.
+
+- ``sigma_scale_half_ratio``: scaling factor for the trial Gaussian proposals used when tuning a chain.
+
+- ``sigma_scale_min`` and ``sigma_scale_max``: these two variables set the minimum and maximum proposal sizes of the model parameters. The minimum relative proposal size of a model parameter equal to the ``sigma_scale_min`` multiplied by the distribution range of the parameter, while the maximum relative proposal size of a model parameter equal to the ``sigma_scale_max`` multiplied by the distribution range of the parameter.
+
+- ``sigma_jumpin_ratio``: scaling factor for the trial Gaussian proposals when the proposal size of a parameter reaches the minimum or maximum value.
+
+- ``i_save_begin``: iteration at which saving of the Markov chains begins.
+
+- ``init_rand_seed``: the random seed.
+
+- ``init_gp_ratio``: the initial Gaussian proposal sizes for each model parameter are equal to the ``init_gp_ratio`` multiplied by the distribution range of the parameter.
+
+- ``para0_min``, ``para0_max``, ``para1_min``, ``para1_min``, ...: the distribution ranges of all model parameters are set by these variables. We should write out the minimum and maximum values of all model parameters explicitly.
+
+- ``Fout_Len``: the maximum length of the string variables when outputting Markov Chains.
+
+- ``FoutPre`` and ``FoutSuf``: prefix and suffix appended to the filenames when saving the Markov chains.
+
+- ``results_dir``: the result directory used to store the Markov Chains.
 
 
+- ``Data_file``:  this variable is used to specify the name of the input data file.
+
+- ``ndim_data``:  an integer variable that denots the number of columns present in the data file.
+
+- ``Delimiter``:  the marker that separates each column in the data file.
+
+
+Advanced Topics
+---------------
+
+
+The above four parts are everything needed to apply Nii-C to sample the posterior distribution of a new model.
+If you need to adapt the Nii-C APT-MCMC framework to other sampling workflows, you will likely have to modify the other subroutines of Nii-C.
+In that case, please refer to the detailed algorithmic description and implementation notes on the :doc:`../algorithm` page.
 
 
