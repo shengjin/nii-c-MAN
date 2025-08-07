@@ -17,14 +17,14 @@ The Prior: user_prior.c
 In Nii-C, we use the file ``user_prior.c`` to describe the prior distribution of all model parameters. 
 
 The Python script ``auto_unif_prior.py``, located in the ``auto_prior`` directory, is used to automatically generate user_prior.c.
-At the top of auto_unif_prior.py, set ``n`` to the number of model parameters and run:
+At the top of ``auto_unif_prior.py``, set ``n`` to the number of model parameters and run:
 
 .. code-block:: console
 
    $ python auto_unif_prior.py
 
-The script will then output a user_prior.c sized to the exact number of model parameters.
-Copy the newly generated user_prior.c file into the source directory of Nii-C, replacing the old file for the linear regression example.
+The script will then output a ``user_prior.c`` sized to the exact number of model parameters.
+Copy the newly generated ``user_prior.c`` file into the source directory of Nii-C, replacing the old file for the linear regression example.
 
 
 
@@ -56,10 +56,15 @@ Then, within the main body of ``logll_beta``, we can unpacked from the ``*ptr_on
     double para1;
     double para2;
     double para3;
+    ...
+    double paraN; // depends how many model parameters are
+
     para0 = *ptr_one_chain;
     para1 = *(ptr_one_chain+1);
     para2 = *(ptr_one_chain+2);
     para3 = *(ptr_one_chain+3);
+    ...
+    paraN = *(ptr_one_chain+N); // depends how many model parameters are
 
 The remaining components of the likelihood function are model-specific and depend on the details of the user's input data file.
 That's the main task of applying Nii-C to a user's model, and the user should work carefully on it.
