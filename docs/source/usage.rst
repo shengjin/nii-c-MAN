@@ -14,7 +14,7 @@ Below, we address each of these four components in detail.
 The Prior: user_prior.c
 -----------------------
 
-In Nii-C, we use the file user_prior.c to describe the prior distribution of all model parameters. 
+In Nii-C, we use the file ``user_prior.c`` to describe the prior distribution of all model parameters. 
 
 The Python script ``auto_unif_prior.py``, located in the ``auto_prior`` directory, is used to automatically generate user_prior.c.
 At the top of auto_unif_prior.py, set ``n`` to the number of model parameters and run:
@@ -36,8 +36,8 @@ Copy the newly generated user_prior.c file into the source directory of Nii-C, r
 The Likelihood: user_logll.c
 ----------------------------
 
-In Nii-C, we use the user_logll.c file to describe a model's likelihood function.
-Because the likelihood function is inherently model-specific, it cannot be auto-generated in the same way as the user_prior.c file.
+In Nii-C, we use the ``user_logll.c`` file to describe a model's likelihood function.
+Because the likelihood function is inherently model-specific, it cannot be auto-generated in the same way as the ``user_prior.c`` file.
 
 To facilitate applying Nii-C to different models, we designed a template function that wraps the coding of the user-specific likelihood function.
 The template likelihood function is called:
@@ -48,7 +48,7 @@ The template likelihood function is called:
 
 Where the ``*ptr_one_chain`` is a one-dimensional array of model paramters, ``*data_NlineNdim`` is a one-dimensional array of flattened input datafile, ``nline_data`` is the line number of the user's input datafile, ``beta_one`` is the beta value of each parallel tempering chain.
 
-Then, within the main body of logll_beta, we can unpacked from the ptr_one_chain array all the model parameters as follows:
+Then, within the main body of ``logll_beta``, we can unpacked from the ``*ptr_one_chain`` array all the model parameters as follows:
 
 .. code-block:: C
 
@@ -63,11 +63,11 @@ Then, within the main body of logll_beta, we can unpacked from the ptr_one_chain
 
 The remaining components of the likelihood function are model-specific and depend on the details of the user's input data file.
 That's the main task of applying Nii-C to a user's model, and the user should work carefully on it.
-In the ``model`` directory of the source code, there are several user_logll.c files for different applications that can be used as exmaples.
+In the ``model`` directory of the source code, there are several ``user_logll.c`` files for different applications that can be used as exmaples.
 
 
 .. note::
-   To use the Nii-C's APT-MCMC algorithm, remember to apply the final tempering step with beta_one at the end of the likelihood function. Depending on how the likelihood is expressed in your implementation, this could be something like "logll*beta_one" or "pow(likelihood, beta_one)."
+   To use the Nii-C's APT-MCMC algorithm, remember to apply the final tempering step with ``beta_one`` at the end of the likelihood function. Depending on how the likelihood is expressed in your implementation, this could be something like ``logll*beta_one`` or ``pow(likelihood, beta_one)``.
 
 
 The user's data file
@@ -75,7 +75,7 @@ The user's data file
 
 By default, Nii-C expects the user to supply a data file for model evaluation.
 The user must specify the name of the data file in the ``input.ini`` file, as well as the number of columns in the data file and the delimiter for each column.
-Within the "input.ini" file, there are three variables associated with the user's datafile, as follows:
+Within the ``input.ini`` file, there are three variables associated with the user's datafile, as follows:
 
 .. code-block:: Markdown
 
@@ -83,10 +83,10 @@ Within the "input.ini" file, there are three variables associated with the user'
     ndim_data:  an integer variable that denots the number of columns present in the data file.
     Delimiter:  the marker that separates each column in the data file.
 
-The user's data file will be loaded into memory and passed to the logll_beta function via the one-dimensional array data_NlineNdim.
+The user's data file will be loaded into memory and passed to the logll_beta function via the one-dimensional array ``data_NlineNdim``.
 
 .. note::
-   No matter how many columns the original data file has, Nii-C will load the multi-column data file and flatten it into a one-dimensional array called data_NlineNdim. Therefore, the user must transform the one-dimensional array back into its original multi-column form when calculating the likelihood function. Converting the one-dimensional array back to its original multi-column form can be something like data_NlineNdim[i_line*ndim_data+j_column].
+   No matter how many columns the original data file has, Nii-C will load the multi-column data file and flatten it into a one-dimensional array called ``*data_NlineNdim``. Therefore, the user must transform the one-dimensional array back into its original multi-column form when calculating the likelihood function. Converting the one-dimensional array back to its original multi-column form can be something like ``data_NlineNdim[i_line*ndim_data+j_column]``.
 
 
 The input.ini file
@@ -94,7 +94,7 @@ The input.ini file
 
 As mentioned earlier, the user's data file must be specified in the input.ini file.  In fact, the input.ini file does far more.  It is Nii-C's main configuration file, governing every aspect of the control variables of the APT-MCMC process.
 It also sets the prior ranges of all model parameters, specifies the details of the output chains, and more.
-This section will introduce all the variables in the input.ini file.
+This section will introduce all the variables in the ``input.ini`` file.
 
 
 - ``N_iter``: it should be a large integer. It sets the total number of iterations of the MCMC process.

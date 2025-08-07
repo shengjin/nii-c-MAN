@@ -48,12 +48,12 @@ With compilation complete, we can now run the executable, which will be sampling
 
 The sampling process will be complete in a few seconds.
 In the newly generated results directory, there are several chain[0-9].dat files contain Markov-chain samples collected at the distinct β of Nii-C’s parallel-tempering MCMC framework.
-In this linear regression example, which is configured by the ``input.ini`` file in the source code directory, chain3.dat (β = 1.0) contains the posterior samples of the model parameters.
+In this linear regression example, which is configured by the ``input.ini`` file in the source code directory, chain3.dat (``β`` = 1.0) contains the posterior samples of the model parameters.
 Please see the Nii-C's code paper [1]_ for the details of its Automatic Parallel Tempering Markov Chain Monte Carlo (APT-MCMC) algorithm and the linear regression model used in this example.
 
 
 .. note::
-    We should always use the chain obtained by β = 1.0 to retrieve the target distribution, as chains obtained by 0 < β < 1.0 merely serve as auxiliary chains.
+    We should always use the chain obtained by ``β`` = 1.0 to retrieve the target distribution, as chains obtained by 0 < ``β`` < 1.0 merely serve as auxiliary chains.
 
 
 This linear regression model is simple yet contains all four elements necessary for MCMC sampling with Nii-C: ``user_prior.c`` specifying the prior distribution, ``user_logll.c`` defining the likelihood function, ``input.ini`` configuring Nii-C's APT-MCMC sampling process, and ``xy.dat`` containing the input data for model evaluation.
