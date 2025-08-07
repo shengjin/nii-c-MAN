@@ -1,8 +1,6 @@
 Usage
 ======================
 
-Introduction
-------------
 
 Although Nii-C can be used to sample any target distribution, it is typically used in the context of Bayesian inference.
 Specifically, it is used to sample the posterior distribution under a given model.
