@@ -29,7 +29,7 @@ Copy the newly generated user_prior.c file into the source directory of Nii-C, r
 
 
 .. note::
-   Currently, auto_unif_prior.py produces uniform priors only. For any other prior, please edit the Parts 7 and 8 of the user_prior.c manually.
+   Currently, ``auto_unif_prior.py`` produces uniform priors only. For any other prior, please edit the Parts 7 and 8 of the ``user_prior.c`` manually.
 
 
 
