@@ -57,14 +57,14 @@ Then, within the main body of ``logll_beta``, we can unpacked from the ``*ptr_on
     double para2;
     double para3;
     ...
-    double paraN; // depends how many model parameters are
+    double paraN; // It depends on the number of model parameters.
 
     para0 = *ptr_one_chain;
     para1 = *(ptr_one_chain+1);
     para2 = *(ptr_one_chain+2);
     para3 = *(ptr_one_chain+3);
     ...
-    paraN = *(ptr_one_chain+N); // depends how many model parameters are
+    paraN = *(ptr_one_chain+N); // It depends on the number of model parameters.
 
 The remaining components of the likelihood function are model-specific and depend on the details of the user's input data file.
 That's the main task of applying Nii-C to a user's model, and the user should work carefully on it.
@@ -97,7 +97,7 @@ The user's data file will be loaded into memory and passed to the ``logll_beta``
 The input.ini file
 ------------------
 
-As mentioned earlier, the user's data file must be specified in the input.ini file.  In fact, the input.ini file does far more.  It is Nii-C's main configuration file, governing every aspect of the control variables of the APT-MCMC process.
+As mentioned earlier, the user's data file must be specified in the ``input.ini`` file.  In fact, the ``input.ini`` file does far more.  It is Nii-C's main configuration file, governing every aspect of the control variables of the APT-MCMC process.
 It also sets the prior ranges of all model parameters, specifies the details of the output chains, and more.
 This section will introduce all the variables in the ``input.ini`` file.
 
